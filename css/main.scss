@@ -1,0 +1,679 @@
+//Documentation: https://sass-lang.com/documsassentation/file.SASS_REFERENCE.html
+
+@import "colours.scss";
+
+html {
+    // overflow: hidden;
+    height: 100%
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+.affil-btn {
+    font-size: 0.83em;
+    height: 20px;
+    line-height: 20px;
+    max-width: 160px;
+    background: #fff;
+    border-radius: 50px;
+    padding: 10px;
+    display: block;
+    margin: 15px auto;
+    background: transparent;
+    color: #fde3a7;
+    border: 2px solid #fde3a7;
+}
+
+body {
+    font-family: sans-serif;
+    font-weight: lighter;
+    font-size: 0.7em;
+    position: relative;
+    // height: inherit
+    height: auto
+}
+
+a {text-decoration: none}
+
+.navbar,
+.footer {
+    background: $darkerOrange;
+    height: auto;
+    min-height: 60px
+}
+
+.footer {
+    position: unset;
+    bottom:0;
+    z-index: 5;
+    height: 60px;
+    width: 100%;
+    z-index: 0
+}
+
+.header {
+    background: floralwhite;
+    .jumbo {
+        width: 100%;
+        // background: url(../img/background-img2.jpg) no-repeat;
+        // height: 300px;
+        background: url(../img/bg-phones.png) repeat;
+        height: 50vh;
+        // background-size: unset;
+        // background-position-x: 0;
+        // background-position-y: 40%;
+        position: relative;
+        .overlay {
+            -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            height: 100%;
+            // background: $nightBlue;
+            background: $darkerOrange;
+            opacity: 0.85;
+            margin-bottom: 0
+        }
+        .txt-ctt {
+            position: absolute;
+            bottom: 30px;
+            left: 10px;
+            color: $lighterOrange;
+            h2 {
+                margin-top: 0;
+                margin-bottom: 10px
+            }
+            h1 {
+                width: 250px;
+                font-size: 3.6em
+            }
+        }
+    }
+}
+
+#logo {
+    width: 100px;
+    height: 40px;
+    display: block;
+    margin: auto;
+    img {width: 100%}
+}
+
+#main-ctn {
+    position: relative;
+    height: 55vh;
+    overflow: scroll;
+    &.blue-bg {
+        background: $nightBlue
+    }
+}
+
+.card {
+    position: absolute;
+    width: 80%;
+    // margin: 10% auto;
+    overflow: scroll;
+    top: 20px;
+    left: 10px;
+    height: auto;
+    padding: 7%;
+    background: #fff;
+    // border: 0.1px solid lightgrey;
+    color: rgb(59, 59, 59);
+    box-shadow: 0px 2px 20px rgba(136, 136, 136, 0.85)
+}
+
+.custom-btn {
+    border-radius: 50px;
+    background: $darkerOrange;
+    width: 100px;
+    height: 50px;
+    color: #fff;
+    text-align: center;
+    margin: 30px auto 0;
+    display: block;
+    border: none
+}
+
+.bot-interaction {
+    height: auto;
+    font-size: 1.13em;
+    &.intro {
+        height: auto;
+        min-height: 60px;
+        margin-bottom: 20px;
+        .question {margin-bottom: 0}
+    }
+    width: 90%;
+    margin: auto auto 30px auto;
+    display: none;
+    .interaction-bloc {
+        display: flex;
+        flex-direction: column;
+        min-height: 60px
+    }
+    .question {
+        height: auto;
+        min-height: 60px;
+        margin-bottom: 20px;
+        div {display: inline-block}
+        .avatar {
+            background: url('../img/avatar.png');
+            width: 50px;
+            height: 50px;
+            background-size: contain;
+            margin-bottom: 0;
+            float: left;
+            margin-right: 5px
+        }
+        .qtn-bloc {
+            width: 55%;
+            background: $darkerOrange;
+            color: $lighterOrange;
+            padding: 5px 10px;
+            float: left;
+            border-radius: 0px 15px 15px;
+            height: 100%;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            font-size: 1.25em
+        }
+    }
+    .answer {
+        input {
+            margin-left: 10px;
+            margin-bottom: 10px;
+            // border: 1.2px solid $darkerOrange;
+            // border: none;
+            // color: $darkerOrange;
+            border: 3px solid #fde3a7;
+            color: #fde3a7;
+            background: none;
+            // background: $lighterOrange;
+            height: 100%;
+            min-height: 40px;
+            border-radius: 50px;
+            padding: 5px 15px;
+            float: right;
+            width: auto;
+            min-width: 35%;
+            white-space: normal;
+            text-align: left;
+            line-height: 20px;
+            font-weight: 700;
+            &.selected {
+                background: $darkerOrange;
+                color: #fff;
+                border: 1.2px solid $darkerOrange
+            }
+        }
+    }
+
+    .backTrack {
+        display: none;
+        width: 50px;
+        height: 50px;
+        background-color: $lighterOrange;
+        border: none;
+        color: $darkerOrange;
+        border-radius: 0;
+        padding: 15px 5px;
+        margin-left: 25px;
+        margin-top: 0;
+        img {width: 80%}
+        &:active {background-color: red}
+        &.enabled {display: inline-block}
+    }
+
+    &.disabled {
+        opacity: 0.7
+    }
+}
+
+#chat-window {
+    width: 100%;
+    display: none;
+    // height: 340px;
+    height: inherit;
+    max-height: 350px;
+    padding-top: 20px;
+    overflow-y: scroll;
+    // background: $nightBlue
+}
+
+#send-param-div {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: $darkerOrange;
+    border: none;
+    color: $lighterOrange;
+    height: 60px;
+    font-size: 1.7em;
+    display: none;
+    #reduce-Cmd-Btn {
+        border: none;
+        width: 40px;
+        height: 40px;
+        background: none;
+        display: block;
+        margin: 10px 20px auto auto;
+        img {
+            width: 100%;
+            display: none
+        }
+        &.to-expand {
+            transform: rotate(180deg);
+        }
+    }
+    div {
+        width: 80%;
+        margin: 5% auto auto auto;
+        display: none;
+        &.visible {display: block}
+        a {text-decoration: none}
+        #sendParamBtn {
+            color: $darkerOrange;
+            background: $lighterOrange;
+            width: 170px;
+            margin: 50px auto;
+            display: block;
+            border-radius: 7px;
+            height: 50px
+        }
+    }
+}
+
+.res-hd-title {
+    text-align: center;
+    margin: 40px auto;
+    color: $darkerOrange
+}
+
+.dev-card {
+    width: 80%;
+    margin: auto auto 40px;
+    border: 0.1px solid lightgray;
+    -webkit-box-shadow: 9px 12px 16px 4px rgba(166,166,166,0.5);
+    -moz-box-shadow: 9px 12px 16px 4px rgba(166,166,166,0.5);
+    box-shadow: 9px 12px 16px 4px rgba(166,166,166,0.5);
+    vertical-align: text-top;
+    background: #fff;
+    img {
+        width: 60%;
+        margin: 15% auto;
+        display: block
+    }
+    .caption {
+        min-height: 40px;
+        line-height: 40px;
+        font-size: 1.8em;
+        border-top: 1px solid grey;
+        text-align: center;
+        background: $darkerOrange;
+        font-weight: 700;
+        color: $lighterOrange;
+        h5 {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+        &.expanded {
+            min-height: 120px;            
+        }
+    }
+}
+
+#startAgainBtn {
+    font-size: 1.8em;
+    width: 150px;
+    margin: 60px auto
+}
+
+@media (min-width:400px) {
+    .bot-interaction {
+        .backTrack {margin-left: 10%}
+    }
+}
+
+@media (min-width:540px) and (max-width:820px) and (orientation:landscape) {
+    html {overflow: scroll}
+
+    body {position: relative}
+
+    .header {
+        .jumbo {height: 100vh}
+    }
+
+    #main-ctn {height: 100vh}
+
+    .card {
+        position: relative;
+        width: 60%;
+        margin: auto;
+        display: block
+    }
+}
+
+@media (min-width:568px) {
+    .header {
+        .jumbo {height: 70vh}
+    }
+    .bot-interaction {
+        .backTrack {margin-left: 24%}
+    }
+}
+
+@media (min-width:670px) {
+    // .header {
+    //     .jumbo {background-size: cover}
+    // }
+}
+
+@media (min-width:767px) {
+    .header {
+        .jumbo {
+            .overlay {
+                -webkit-clip-path: polygon(0 0, 65% 0, 40% 100%, 0 100%);
+                clip-path: polygon(0 0, 65% 0, 40% 100%, 0 100%);
+            }
+            .txt-ctt {
+                left: 3%;
+                h2 {font-size: 2.1em}
+            }
+        }
+    }
+    .bot-interaction {
+        .backTrack {margin-top: 0px}
+    }
+    .dev-card {
+        width: 25%;
+        margin: auto 30px 40px;
+        display: inline-block
+    }
+}
+
+@media (min-width:768px) and (orientation:portrait) {
+    .header {
+        .jumbo {
+            // background: url(../img/background-img3.jpg) no-repeat;
+            height: 50vh;
+            .txt-ctt {
+                top: 100px;
+                left: 20px;
+                h1 {
+                    width: 350px;
+                    font-size: 3.6em
+                }
+                h2 {font-size: 2.25em}
+            }
+        }
+    }
+
+    .card {
+        width: 50%;
+        overflow: scroll;
+        top: 15%;
+        left: 17%;
+        margin-bottom: 10%
+    }
+
+    #main-ctn {height: 45vh}
+
+    #chat-window {padding-bottom: 10%}
+    .bot-interaction {
+        .answer {
+            input {
+                float: none;
+                display: block;
+                margin: auto 0 20px auto
+            }
+        }
+        .backTrack {margin-left: 26%}
+    }
+}
+
+@media (min-width:992px) {
+    #logo {
+        width: 90px;
+        height: 40px;
+        display: block;
+        margin-left: 20px;
+        padding-top: 10px
+    }
+    .header {
+        .jumbo {
+            .txt-ctt {
+                h1 {
+                    width: 550px;
+                    font-size: 5.6em
+                }
+                h2 {font-size: 3em}
+            }
+        }
+    }
+
+    #main-ctn {
+        width: 100%;
+        // right: -40%;
+        top: 60px;
+        height: 90vh;
+        z-index: 0;
+        padding-bottom: 0;
+        overflow-x: hidden
+    }
+
+    #chat-window {
+        background: $nightBlue
+    }
+
+    .bot-interaction {
+        .backTrack {margin-left: 25px}
+    }
+
+    #send-param-div {bottom: -15px}
+
+}
+
+@media (min-width:992px) and (min-height:730px) {
+    .header {
+        .jumbo {
+            .txt-ctt {top: 200px}
+        }
+    }
+}
+
+
+@media (min-width:992px) and (orientation:portrait) {
+    #main-ctn {
+        top: 0px;
+        height: 45vh
+    }
+
+    .bot-interaction {
+        .backTrack {margin-left: 30%}
+    }
+}
+
+@media (min-width:992px) and (orientation:landscape) {
+    .header {
+        .jumbo {height: 90vh}
+    }
+
+    #main-ctn {position: absolute}
+
+    .card {
+        width: 250px;
+        top: 20%;
+        right: 5%;
+        left: unset;
+        box-shadow: unset;
+        padding: 2%
+    }
+
+    #chat-window {
+        position: absolute;
+        width: 380px;
+        max-height: unset;
+        top: 0;
+        right: -100%;
+        display: block
+    }
+
+    #send-param-div {
+        position: absolute;
+        left: unset;
+        right: 0;
+        width: 380px
+    }
+
+    .dev-cards-ctn {
+        margin: auto;
+        display: block
+    }
+
+    .dev-card {margin: auto 30px 40px}
+
+    #startAgainBtn {margin: 10% auto}
+}
+
+@media (min-width: 1200px) {
+    .header {
+        .jumbo {
+            .overlay {
+                -webkit-clip-path: polygon(5% 0, 48% 0, 40% 100%, 0 100%);
+                clip-path: polygon(5% 0, 48% 0, 40% 100%, 0 100%);
+            }
+            .txt-ctt {left: 5%}
+        }
+    }
+    .card {
+        width: 400px;
+        padding: 2%
+    }
+    #chat-window {padding-bottom: 0}
+
+    .res-hd-title {font-size: 2.6em}
+    .dev-cards-ctn {width: 1000px}
+    .dev-card {width: 27%}
+    #startAgainBtn {margin: 20px auto}
+}
+
+@media (min-width: 1200px) and (min-height:780px) {
+    #startAgainBtn {
+        margin: 20px auto 20%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .res-hd-title {margin: 5% auto}
+
+    .dev-cards-ctn {width: 950px}
+
+    .dev-card {width: 250px}
+
+    #chat-window {padding-bottom: 20%}
+}
+
+@media (min-width: 1400px) and (min-height:992px) {
+    .header {
+        .jumbo {
+            .txt-ctt {
+                top: 200px;
+                left: 100px
+            }
+        }
+    }
+
+    #startAgainBtn {margin: 10% auto}
+}
+
+@media (min-width: 1600px) {
+    .res-hd-title {font-size: 4em}
+}
+
+@media (min-width: 2500px) {
+    .header {
+        .jumbo {
+            .txt-ctt {
+                top: 200px;
+                left: 100px;
+                h1 {
+                    width: 900px;
+                    font-size: 10em
+                }
+                h2 {font-size: 5em}
+            }
+        }
+    }
+    .card {
+        width: 800px;
+        right: 100px;
+        h3 {font-size: 5em}
+        p,button {font-size: 2.5em}
+        button {
+            width: 200px;
+            height: 80px;
+            margin: 80px auto 0
+        }
+    }
+    #chat-window {
+        width: 700px;
+    }
+    .bot-interaction {
+        .question {
+            .avatar {
+                width: 80px;
+                height: 80px
+            }
+            .qtn-bloc {
+                width: 65%;
+                font-size: 2.25em
+            }
+        }
+        .answer {
+            input {
+                margin-bottom: 20px;
+                min-height: 60px;
+                padding: 5px 30px;
+                font-size: 1.5em
+            }
+        }
+        .backTrack {
+            display: none;
+            width: 80px;
+            height: 80px;
+            background-color: $lighterOrange;
+            border: none;
+            color: $darkerOrange;
+            border-radius: 0;
+            padding: 15px 5px;
+            margin-left: 30px;
+            margin-top: 5px;
+        }
+    }
+    #send-param-div {
+        width: 700px;
+        height: 100px;
+        div {
+            margin-top: 50%;
+            h3 {font-size: 3em}
+            p, button {font-size: 1.8em}
+            #sendParamBtn {
+                width: 250px;
+                height: 80px;
+                margin: 60px auto 0
+            }
+        }
+        #reduce-Cmd-Btn {
+            width: 100px;
+            height: 100px
+        }
+    }
+}
+
+@media (min-height:1080px) and (max-width:1920px) {
+    #send-param-div div {margin: 100% auto auto auto}
+}
