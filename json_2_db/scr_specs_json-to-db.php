@@ -1,6 +1,6 @@
 <?php 
     
-    $JSONdevicesArr = file_get_contents("devices.json");
+    $JSONdevicesArr = file_get_contents("../devices.json");
     $devicesDecode = json_decode($JSONdevicesArr, TRUE);
     
     $typeLength = 0;
@@ -11,16 +11,7 @@
     $ratioLen = 0;
 
 
-    include 'dbhandler.php';
-    
-    if ($mysqli->connect_error) {
-        echo 'Errno: '.$mysqli->connect_errno;
-        echo '<br>';
-        echo 'Error: '.$mysqli->connect_error;
-        exit();
-    }
-
-    echo 'Success: A proper connection to MySQL was made.';
+    include '../dbhandler.php';
 
     foreach ($devicesDecode as $key => $jsons) { // This will search in the 2 jsons
 
@@ -79,8 +70,8 @@
         $sql = "INSERT INTO scr_specs (scr_type, clr_rge, touch_scr, scr_size, scr_res, scr_ratio)
                 VALUES ('$scrType', '$scrColRge', '$touchScreen', $scrSize,  '$scrRes', '$scrRatio')";
 
-        $mysqli->query($sql);
-        echo mysqli_error($mysqli);
+        $conn->query($sql);
+        echo mysqli_error($conn);
    }
 
 //    echo 'Type string is ' . $typeLength . ' characters', "\n";
@@ -90,5 +81,5 @@
 //    echo 'ScrRes string is ' . $resLen . ' characters', "\n";
 //    echo 'ScrRatio string is ' .  $ratioLen . ' characters', "\n";
 
-    $mysqli->close();
+    $conn->close();
 ?>

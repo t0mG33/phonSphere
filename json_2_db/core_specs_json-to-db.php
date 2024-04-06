@@ -1,18 +1,9 @@
 <?php 
     
-    $JSONdevicesArr = file_get_contents("devices.json");
+    $JSONdevicesArr = file_get_contents("../devices.json");
     $devicesDecode = json_decode($JSONdevicesArr, TRUE);
 
-    include 'dbhandler.php';
-    
-    if ($mysqli->connect_error) {
-        echo 'Errno: '.$mysqli->connect_errno;
-        echo '<br>';
-        echo 'Error: '.$mysqli->connect_error;
-        exit();
-    }
-
-    echo 'Success: A proper connection to MySQL was made.', "\n";
+    include '../dbhandler.php';
 
     foreach ($devicesDecode as $key => $jsons) { // This will search in the 2 jsons
 
@@ -85,9 +76,9 @@
         $sql = "INSERT INTO core_specs (cpu_specs, cpu_power, ram, min_builtIn_str, max_builtIn_str, ext_str_cap, ext_str_form)
             VALUES ('$cpuTech', '$cpuPwr', $ram, $minBuiltinStorage, $maxBuiltinStorage, $extStrCap, '$extStrFormat')";
 
-        $mysqli->query($sql);
-        echo mysqli_error($mysqli);
+        $conn->query($sql);
+        echo mysqli_error($conn);
    }
 
-    $mysqli->close();
+    $conn->close();
 ?>

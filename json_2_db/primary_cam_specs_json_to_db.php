@@ -1,18 +1,9 @@
 <?php 
     
-    $JSONdevicesArr = file_get_contents("devices.json");
+    $JSONdevicesArr = file_get_contents("../devices.json");
     $devicesDecode = json_decode($JSONdevicesArr, TRUE);
 
-    include 'dbhandler.php';
-    
-    if ($mysqli->connect_error) {
-        echo 'Errno: '.$mysqli->connect_errno;
-        echo '<br>';
-        echo 'Error: '.$mysqli->connect_error;
-        exit();
-    }
-
-    echo 'Success: A proper connection to MySQL was made.', "\n";
+    include '../dbhandler.php';
 
     foreach ($devicesDecode as $key => $jsons) { // This will search in the 2 jsons
 
@@ -155,9 +146,9 @@
         $sql = "INSERT INTO primary_cam_specs (camRes, lensApe, lensWidth, OIS, opticZoom, dualCam, videoRes, uhd4k, hdr)
             VALUES ($camRes, $camApe, $camLenseWidth, $has_Ois, $opticZoom, $has_dualCam, $camVdoRes, $has_UHD4K, $has_HDR)";
 
-        $mysqli->query($sql);
-        echo mysqli_error($mysqli);
+        $conn->query($sql);
+        echo mysqli_error($conn);
    }
 
-    $mysqli->close();
+    $conn->close();
 ?>

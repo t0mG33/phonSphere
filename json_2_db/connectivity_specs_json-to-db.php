@@ -1,6 +1,6 @@
 <?php 
     
-    $JSONdevicesArr = file_get_contents("devices.json");
+    $JSONdevicesArr = file_get_contents("../devices.json");
     $devicesDecode = json_decode($JSONdevicesArr, TRUE);
     
     // $btLen = 0;
@@ -12,16 +12,7 @@
     // $clLen = 0;
 
 
-    include 'dbhandler.php';
-    
-    if ($mysqli->connect_error) {
-        echo 'Errno: '.$mysqli->connect_errno;
-        echo '<br>';
-        echo 'Error: '.$mysqli->connect_error;
-        exit();
-    }
-
-    echo 'Success: A proper connection to MySQL was made.', "\n";
+    include '../dbhandler.php';
 
     foreach ($devicesDecode as $key => $jsons) { // This will search in the 2 jsons
 
@@ -83,8 +74,8 @@
         $sql = "INSERT INTO connectivity_specs (bluetooth, wifi, hotspot, frequencies, usb, contactless)
                 VALUES ($bluetooth, '$wifi', '$hotspot', '$freq', $usb, '$contactLess')";
 
-        $mysqli->query($sql);
-        echo mysqli_error($mysqli);
+        $conn->query($sql);
+        echo mysqli_error($conn);
    }
 
 //    echo 'Blutooth string is ' . $btLen . ' characters', "\n";
@@ -94,5 +85,5 @@
 //    echo 'USB string is ' . $usbLen . ' characters', "\n";
 // echo 'Contactless string is ' . $clLen . ' characters', "\n";
 
-    $mysqli->close();
+    $conn->close();
 ?>

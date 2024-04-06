@@ -1,21 +1,12 @@
 <?php 
     
-    $JSONdevicesArr = file_get_contents("devices.json");
+    $JSONdevicesArr = file_get_contents("../devices.json");
     $devicesDecode = json_decode($JSONdevicesArr, TRUE);
 
     // $gpsSys  = array();
 
 
-    include 'dbhandler.php';
-    
-    if ($mysqli->connect_error) {
-        echo 'Errno: '.$mysqli->connect_errno;
-        echo '<br>';
-        echo 'Error: '.$mysqli->connect_error;
-        exit();
-    }
-
-    echo 'Success: A proper connection to MySQL was made.', "\n";
+    include '../dbhandler.php';
 
     foreach ($devicesDecode as $key => $jsons) { // This will search in the 2 jsons
 
@@ -95,9 +86,9 @@
         $sql = "INSERT INTO gps_specs (has_a_gps, has_glonass, has_galileo, has_qzss, has_bds, has_bds2, has_sbas)
                 VALUES ($has_AGPS, $has_GLONASS, $has_GALILEO, $has_QZSS, $has_BDS, $has_BDS2, $has_SBAS)";
 
-        $mysqli->query($sql);
-        echo mysqli_error($mysqli);
+        $conn->query($sql);
+        echo mysqli_error($conn);
    }
 
-    $mysqli->close();
+    $conn->close();
 ?>
