@@ -3,7 +3,6 @@
     <?php include 'includes/navbar.php';?>
 
     <div class="jumbo">
-        <div class="overlay"></div>
         <div class="txt-ctt">
             <h1>Your new cellphone with just 3 questions</h1>
             <h2>No tech specs...</h2>
