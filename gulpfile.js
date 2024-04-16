@@ -1,11 +1,12 @@
 const gulp = require('gulp');
+const sass = require('gulp-sass')(require('sass'));
 const concat = require('gulp-concat');
 const cleanCss = require('gulp-clean-css');
 
 function compileSass() {
     return gulp.src('scss/**/[^_]*.?(s)css') // Path to your SCSS files
       .pipe(concat('main.min.css'))
-    //   .pipe(sass().on('error', sass.logError))
+      .pipe(sass().on('error', sass.logError))
       .pipe(cleanCss())
       .pipe(gulp.dest('css')); // Output directory for CSS files
   }gulp.task('sass', compileSass);
