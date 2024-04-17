@@ -216,7 +216,7 @@ $(document).ready(function(){
         }
     }
 
-    chatInit()
+    // chatInit()
 
     //closes the modal
     // $(".closeModal").click(function(){
