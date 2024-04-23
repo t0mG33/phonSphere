@@ -40,7 +40,7 @@
   
 </head>
 
-<body>
+<body class="d-flex flex-column">
 
   <?php include 'includes/header.php';?>
 
