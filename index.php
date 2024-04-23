@@ -44,35 +44,27 @@
 
   <?php include 'includes/header.php';?>
 
-  <div id="main-ctn">
+  <main id="main-ctn">
 
-    <div id="chat-window">
-      <div class="bot-interaction intro">
-      
-          <div class="interaction-bloc">
-              <div class="question">
-                  <div class="avatar"></div>
-                  <div class="qtn-bloc">
-                      <p>Hi, my name is Celleo and I will help to find the perfect smartphone for you!</p>
+    <div class="container mw-100">
+          <div class="row">
+              <div class="col-md-6 offset-md-3">
+                  <div class="jumbo mx-auto">
+                      <div class="card w-100 position-relative start-0 txt-ctt">
+                          <div class="card-body">
+                              <h1 class="card-title mb-5">Your new cellphone with just 3 questions</h1>
+                              <h2 class="card-subtitle">No tech specs...</h2>
+                              <h2 class="card-subtitle">No upselling...</h2>
+                              <h2 class="card-subtitle mb-5">No hassle in store.</h2>
+                              <button id="start-btn">Start</button>
+                          </div>
+                      </div>
                   </div>
               </div>
           </div>
-          
       </div>
 
-      <div class="bot-interaction intro">
-          <div class="interaction-bloc">
-              <div class="question">
-                  <div class="avatar"></div>
-                  <div class="qtn-bloc">
-                      <p>Let's do it!</p>
-                  </div>
-              </div>
-          </div>        
-      </div>
-    
-    </div>
-  </div>
+  </main>
 
   <div id="send-param-div">
     <button id="reduce-Cmd-Btn">
