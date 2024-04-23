@@ -15,19 +15,12 @@ body {
     font-family: sans-serif;
     font-weight: lighter;
     font-size: 0.7em;
-    position: relative;
-    // height: inherit
-    height: auto;
-    margin: 0;
-    background: #fffaf0;
 }
 
 a {text-decoration: none}
 
 .navbar,
 .footer {
-    // background: $darkerOrange;
-    // background: #ff7200;
     background: linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
     background: -webkit-linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
     background: -moz-linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
@@ -44,17 +37,12 @@ a {text-decoration: none}
     z-index: 0
 }
 
-.header {
+main {
     background: floralwhite;
     .jumbo {
-        width: 100%;
-        // height: 50vh;
-        position: relative;
-        .txt-ctt {
-            width: 55%;
-            max-width: 600px;
-            margin: 17% auto ;
-            width: 50%;
+        margin-top: 17%;
+        max-width: 600px;
+        .card.txt-ctt {
             padding:1.25rem;
             color: $darkerOrange;
             border: 1.5px solid lightgray;
@@ -96,17 +84,17 @@ a {text-decoration: none}
     height: 40px;
     display: block;
     margin: auto;
-    img {width: 100%}
-}
-
-#main-ctn {
-    position: relative;
-    height: 55vh;
-    overflow: scroll;
-    &.blue-bg {
-        background: $nightBlue
+    img {
+        width: 100%;
+        margin-top: -15px;
     }
 }
+
+// #main-ctn {
+//     &.blue-bg {
+//         background: $nightBlue
+//     }
+// }
 
 .card {
     position: absolute;
@@ -184,13 +172,9 @@ a {text-decoration: none}
         input {
             margin-left: 10px;
             margin-bottom: 10px;
-            // border: 1.2px solid $darkerOrange;
-            // border: none;
-            // color: $darkerOrange;
             border: 3px solid #fde3a7;
             color: #fde3a7;
             background: none;
-            // background: $lighterOrange;
             height: 100%;
             min-height: 40px;
             border-radius: 50px;
@@ -339,7 +323,7 @@ a {text-decoration: none}
 }
 
 @media (max-width:400px) {
-    .header {
+    main {
         .jumbo {
             .txt-ctt {
                 width: 80%;
@@ -359,12 +343,6 @@ a {text-decoration: none}
     html {overflow: scroll}
 
     body {position: relative}
-
-    .header {
-        .jumbo {height: 100vh}
-    }
-
-    #main-ctn {height: 100vh}
 
     .card {
         position: relative;
@@ -392,7 +370,7 @@ a {text-decoration: none}
 }
 
 @media (min-width:768px) and (orientation:portrait) {
-    .header {
+    .main {
         .jumbo {
             .txt-ctt {
                 h2 {
