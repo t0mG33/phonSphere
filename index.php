@@ -25,6 +25,7 @@
   <!-- Place favicon.ico in the root directory -->
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="css/main.min.css">
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
