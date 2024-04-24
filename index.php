@@ -49,14 +49,14 @@
     <div class="container mw-100">
           <div class="row">
               <div class="col-md-6 offset-md-3">
-                  <div class="jumbo mx-auto">
+                  <div class="jumbo mx-auto my-5 pt-5">
                       <div class="card w-100 h-auto bg-white p-3 mb-5 border border-light-subtle rounded position-relative start-0 txt-ctt">
                           <div class="card-body">
                               <h1 class="card-title mb-5 text-center fs-1">Your new cellphone with just 3 questions</h1>
                               <h2 class="card-subtitle mt-0 mb-2 fw-normal fs-4">No tech specs...</h2>
                               <h2 class="card-subtitle mt-0 mb-2 fw-normal fs-4">No upselling...</h2>
                               <h2 class="card-subtitle  mt-0 mb-5 fw-normal fs-4">No hassle in store.</h2>
-                              <button id="start-btn" class="d-block m-auto py-2 px-3 rounded-pill fs-6 fw-bold">Start</button>
+                              <button id="start-btn" class="d-block m-auto py-2 px-3 rounded-pill fs-6 fw-bold animate__animated animate__pulse">Start</button>
                           </div>
                       </div>
                   </div>
@@ -88,18 +88,9 @@
 
   <?php include 'includes/footer.php';?>
 
-  <!-- <script src="js/vendor/modernizr-3.6.0.min.js"></script> -->
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <!-- <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script> -->
-  <!-- <script src="js/plugins.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>	
   <script src="js/main.js"></script>
 
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <!-- <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async defer></script> -->
 </body>
 
 </html>
