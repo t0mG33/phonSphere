@@ -1,6 +1,7 @@
 //Documentation: https://sass-lang.com/documsassentation/file.SASS_REFERENCE.html
 @import "bootstrap/bootstrap.scss";
 @import "colours.scss";
+@import "fonts.scss";
 
 html {
     height: 100%
@@ -11,8 +12,8 @@ html {
 }
 
 body {
-    font-family: sans-serif;
-    font-weight: lighter;
+    font-family: "Kayak", sans-serif;
+    font-weight: 400;
     font-size: 0.7em;
 }
 
