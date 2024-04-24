@@ -40,7 +40,7 @@
   
 </head>
 
-<body class="d-flex flex-column">
+<body class="d-flex flex-column h-100">
 
   <?php include 'includes/header.php';?>
 
@@ -50,13 +50,13 @@
           <div class="row">
               <div class="col-md-6 offset-md-3">
                   <div class="jumbo mx-auto">
-                      <div class="card w-100 position-relative start-0 txt-ctt">
+                      <div class="card w-100 h-auto bg-white p-3 mb-5 border border-light-subtle rounded position-relative start-0 txt-ctt">
                           <div class="card-body">
-                              <h1 class="card-title mb-5">Your new cellphone with just 3 questions</h1>
-                              <h2 class="card-subtitle">No tech specs...</h2>
-                              <h2 class="card-subtitle">No upselling...</h2>
-                              <h2 class="card-subtitle mb-5">No hassle in store.</h2>
-                              <button id="start-btn">Start</button>
+                              <h1 class="card-title mb-5 text-center fs-1">Your new cellphone with just 3 questions</h1>
+                              <h2 class="card-subtitle mt-0 mb-2 fw-normal fs-4">No tech specs...</h2>
+                              <h2 class="card-subtitle mt-0 mb-2 fw-normal fs-4">No upselling...</h2>
+                              <h2 class="card-subtitle  mt-0 mb-5 fw-normal fs-4">No hassle in store.</h2>
+                              <button id="start-btn" class="d-block m-auto py-2 px-3 rounded-pill fs-6 fw-bold">Start</button>
                           </div>
                       </div>
                   </div>
