@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/t0mG33/phonSphere#readme",
   "dependencies": {
+    "bootstrap": "^5.3.3",
     "sass": "^1.74.1"
   },
   "devDependencies": {
