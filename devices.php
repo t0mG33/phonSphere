@@ -238,7 +238,7 @@
   <!-- Place favicon.ico in the root directory -->
 
   <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.min.css">
 
   <style>
     body {background: floralwhite}
@@ -246,31 +246,41 @@
   
 </head>
 
-<body>
+<body class="m-0">
 
     <?php include 'includes/navbar.php';?>
 
-    <h1 class="res-hd-title">We recommend these devices:</h1>
+    <main id="devices-ctn">
+        <div class="container">
+            <div class="row">
+                <div class="col-12  my-5">
 
-    <div class="dev-cards-ctn">
+                    <h1 class="res-hd-title">We recommend these devices:</h1>
 
-        <?php foreach ($selectArr as $item) :?>
+                    <div class="dev-cards-ctn">
 
-            <div class="dev-card">
-                <img src="<?= $item['image'] ?>" alt="<?= $item['brand'] . ' ' . $item['name'] ?>"/>
-                <div class="caption">
-                    <h5><?= $item['brand'] . " " . $item['name'] ?></h5>
+                        <?php foreach ($selectArr as $item) :?>
+
+                            <div class="dev-card">
+                                <img src="<?= $item['image'] ?>" alt="<?= $item['brand'] . ' ' . $item['name'] ?>"/>
+                                <div class="caption">
+                                    <h5><?= $item['brand'] . " " . $item['name'] ?></h5>
+                                </div>
+                                
+                            </div>
+
+                        <?php endforeach ?>
+
+                    </div>
+
+                    <a href="./">
+                        <button id="startAgainBtn" class="custom-btn">Start again</button>
+                    </a>
+
                 </div>
-                
             </div>
-
-        <?php endforeach ?>
-
-    </div>
-
-    <a href="index.php">
-        <button id="startAgainBtn" class="custom-btn">Start again</button>
-    </a>
+        </div>
+    </main>
 
     <?php include 'includes/footer.php';?>
 
