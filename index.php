@@ -27,16 +27,6 @@
   <!-- <link rel="stylesheet" href="css/normalize.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="css/main.min.css">
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151418641-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-151418641-1');
-  </script>
   
 </head>
 
@@ -63,28 +53,7 @@
               </div>
           </div>
       </div>
-
   </main>
-
-  <div id="send-param-div">
-    <button id="reduce-Cmd-Btn">
-      <img src="./img/back-triangle-down.png" alt="reduce div">
-    </button>
-    <div>
-        <h3>Excellent!</h3>
-        <p>I've got all the information I need to fetch the perfect smartphone for you!</p>
-        <p>Ready?!</p>
-
-        <form id="devSubmit" action="devices.php" method="post">
-
-          <input type="hidden" id="ParamArray" name="ParamArray" value="">
-
-          <input type="submit" id="sendParamBtn" name="sendParam" value="Let's do it!" />
-
-        </form>
-
-    </div>
-  </div>
 
   <?php include 'includes/footer.php';?>
 
