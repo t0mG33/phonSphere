@@ -48,7 +48,7 @@
 
     <div class="container mw-100">
           <div class="row">
-              <div class="col-md-6 offset-md-3">
+              <div class="col-md-6 offset-md-3 overflow-hidden">
                   <div class="jumbo mx-auto my-5 pt-5">
                       <div class="card w-100 h-auto bg-white p-3 mb-5 border border-light-subtle rounded position-relative start-0 txt-ctt">
                           <div class="card-body">

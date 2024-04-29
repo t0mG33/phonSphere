@@ -64,18 +64,6 @@ questionsArr = [
      },
 ]
 
-// for (var i = 0; i<questionsArr.length; i++) {
-//     document.getElementById("chat-window").innerHTML+= '<div class="bot-interaction"><div class="interaction-bloc"><div class="question"><div class="avatar"></div><div class="qtn-bloc"><p>'+ questionsArr[i].labelContent + '</p></div></div><div class="answer"><form id="' + questionsArr[i].formID +'" action="post"></form></div></div></div>';
-//     var inputsArr = questionsArr[i].inputs
-//     console.log(inputsArr)
-//     for (var j = 0; j<inputsArr.length; j++) {
-//         $(".bot-interaction").find(".answer").find("form").append('<input id="' + inputsArr[j].ID + '" type="button" name="" value="' + inputsArr[j].Value + '" onclick="setParameters()" />')
-//     }
-// }
-
-//Create an array to store each string.
-// var paramArr = [];
-
 //Create an array to store each answer.
 var answersArr = [];
 
@@ -86,27 +74,27 @@ var responseArr = [];
 var width = $(window).width();
 var orientPortrait = null
 
-setParameters = function() {
+function setParameters(event) {
 
-    event.target.classList.add("selected");
+    $(event.target).addClass("selected");
 
     var inputID = event.target.id;
 
-    if (inputID === '1A' || inputID === '1B' || inputID === '1C') {
-        loopThroughFormInputs('answerForm1')
-    } else if (inputID === '2A' || inputID === '2B') {
-        loopThroughFormInputs('answerForm2')
-    } else if (inputID === '3A' || inputID === '3B' || inputID === '3C') {
-        loopThroughFormInputs('answerForm3')
-    }
+    // if (inputID === '1A' || inputID === '1B' || inputID === '1C') {
+    //     loopThroughFormInputs('answerForm1')
+    // } else if (inputID === '2A' || inputID === '2B') {
+    //     loopThroughFormInputs('answerForm2')
+    // } else if (inputID === '3A' || inputID === '3B' || inputID === '3C') {
+    //     loopThroughFormInputs('answerForm3')
+    // }
 
-    function loopThroughFormInputs(formId) {
-        var form = document.getElementById(formId);
-        var radio = form.getElementsByTagName('input')
-        for (var i=0; i<radio.length; i++) {
-            radio[i].disabled = true
-        }
-    }
+    // function loopThroughFormInputs(formId) {
+    //     var form = document.getElementById(formId);
+    //     var radio = form.getElementsByTagName('input')
+    //     for (var i=0; i<radio.length; i++) {
+    //         radio[i].disabled = true
+    //     }
+    // }
 
     //Push parameter value into the answersArr unless array already contains that string
     if (!answersArr.includes(inputID) && answersArr.length < 3) {
@@ -118,234 +106,91 @@ setParameters = function() {
     
 }
 
-// Get the modal
-var modal = document.getElementById('chatMdlCtn');
+// Redering the input elements inside each card as per the content of questionsArr
+function renderUserInputForm(arr) {
+    var count = 1;
 
-//Check orientation of screen
-$(window).on("deviceorientation", function( event ) {
-    if (window.matchMedia("(orientation: portrait)").matches) {
-        orientPortrait = true
-    }
-    if (window.matchMedia("(orientation: landscape)").matches) {
-        orientPortrait = false
-    }
-});
+    $(questionsArr).each(function(i, q){
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+        // var buttonType = function() {
+        //     if (i === ($(questionsArr).length - 1)) {
+        //         return "submit"
+        //     } else {
+        //         return "button"
+        //     }
+        // }
+
+        $("#userInputForm").append('<div id="interaction' + count + '" class="d-none card interaction w-100 h-auto p-3 mx-5 start-0 txt-ctt"><div class="card-body"><h1 class="card-question mb-5 text-center fs-1 fw-bold">' + q.labelContent + '</h1></div></div>');
+        arr = q.inputs;
+        $(arr).each(function(n, input) {
+            $('#interaction'+ count).find(".card-body").append('<div class="input-group d-block"><input id="' + input.ID + '" type="radio" name="" value="' + input.Value + '" class="mt-2" /><label for="' + input.ID + '" class="fs-4 ms-2">' + input.Value + '</label></div>')
+        });
+        $('#interaction'+ count).find(".card-body").append('<button type="button" id="submit' + q.formID + '" class="d-block mx-auto mt-4 py-2 px-3 rounded-pill fs-6 fw-bold animate__animated animate__pulse">Submit</button>');
+        count++;
+    })
+}
+
+//Sliding animation for each card in the input form
+function cardSlide(cardId, event) {
+    $(event.target).parents(".card").addClass("animate__animated animate__backOutLeft");
+    $("#" + cardId).removeClass("d-none").addClass("is-active animate__animated animate__backInRight");
+    $(event.target).parents(".card").addClass("d-none");
 }
 
 $(document).ready(function(){
 
-    var inputsArr = null
+    var inputsArr = null;
 
-    for (var i = 0; i<questionsArr.length; i++) {
-        $("#chat-window").append('<div class="bot-interaction"><div class="interaction-bloc"><div class="question"><div class="avatar"></div><div class="qtn-bloc"><p>'+ questionsArr[i].labelContent + '</p></div></div><div class="answer"><form id="' + questionsArr[i].formID +'" action="post"></form></div></div></div>');
-        inputsArr = questionsArr[i].inputs
-        // console.log(inputsArr)
-        for (var j = 0; j<inputsArr.length; j++) {
-            $('#'+ questionsArr[i].formID).append('<input id="' + inputsArr[j].ID + '" type="button" name="" value="' + inputsArr[j].Value + '" onclick="setParameters()" />')
-        }
-    }
+    //Creating form element in the UI and rendering the input form
+    $(".jumbo").append('<form id="userInputForm" class="d-none" method="POST" action="devices.php" ></form>');
+    renderUserInputForm(inputsArr)
 
-    $(".bot-interaction").each(function(){
-        $(this).addClass("disabled")
-        if (!$(this).hasClass("intro") && !$(this).is(".bot-interaction:eq(2)")) {
-            $(this).find(".question").append('<button class="backTrack" type="button"><img src="./img/back-triangle.png" /></button>')
-        }
-    })
-
-    //opens chat to intro button click
-    // $("#bootChatBtn").click(function(){
-
-    //     if (width < 992 || orientPortrait) {
-    //         $("#main-ctn").addClass("blue-bg")
-    //         $("#intro").animate({left:'-100%'}, "slow").hide();
-    //         $("#chat-window").fadeIn()
-    //     } else {
-    //         $("#intro").animate({right:'-100%'}, "slow");
-    //         $("#chat-window").animate({right:'0'}, "slow")
-    //     }
-
-    //     var passedIntro = false
-
-    //     setTimeout(function(){
-    //         enableInteraction(".bot-interaction:first")
-    //     },600);
-
-    //     setTimeout(function(){
-    //         enableInteraction(".bot-interaction:eq(1)")
-    //         passedIntro = true
-    //     },1600);
-
-    //     if (passedIntro = true) {
-    //         setTimeout(function(){
-    //             enableInteraction(".bot-interaction:eq(2)")
-    //         },2500)
-    //     }
-    // });
-
-    var chatInit = function() {
-        if (width < 992 || orientPortrait) {
-            $("#main-ctn").addClass("blue-bg")
-            // $("#intro").animate({left:'-100%'}, "slow").hide();
-            $("#chat-window").fadeIn()
-        } else {
-            // $("#intro").animate({right:'-100%'}, "slow");
-            $("#chat-window").animate({right:'0'}, "slow")
-        }
-
-        var passedIntro = false
-
-        setTimeout(function(){
-            enableInteraction(".bot-interaction:first")
-        },600);
-
-        setTimeout(function(){
-            enableInteraction(".bot-interaction:eq(1)")
-            passedIntro = true
-        },1600);
-
-        if (passedIntro = true) {
-            setTimeout(function(){
-                enableInteraction(".bot-interaction:eq(2)")
-            },2500)
-        }
-    }
-
-    // chatInit()
-
-    //closes the modal
-    // $(".closeModal").click(function(){
-    //     $("#chatMdlCtn").fadeOut()
-    // })
-
-    $("#1A, #1B, #1C").click(function(){
-        enableInteraction(".bot-interaction:eq(3)")
+    $("#start-btn").on("click", function(event) {
+        $(event.target).parents(".card").addClass("d-none");
+        $("#userInputForm").removeClass("d-none");
+        cardSlide("interaction1", event);
     });
 
-    $("#2A, #2B").click(function(){
-        enableInteraction(".bot-interaction:eq(4)")
+    $("#submitanswerForm1").on("click", function(event) {
+        cardSlide("interaction2", event);
     });
 
-    $("#3A, #3B, #3C").click(function(){
-        // $("#chatMdlCtn").find(".modal-content").addClass("extended");
-        $(this).parents(".interaction-bloc").css("margin-bottom","120px")
-        $("#send-param-div").fadeIn("slow");
-        $('#chat-window').animate({
-            scrollTop: $("#send-param-div").offset().top
-        },600);
-        setTimeout(function(){
-            $('#send-param-div').animate({height: '100%',},400);
-            $('#send-param-div div').toggleClass("visible")
-            $('#send-param-div').find("#reduce-Cmd-Btn img").fadeIn("slow")
-        },400)
+    $("#submitanswerForm2").on("click", function(event) {
+        cardSlide("interaction3", event);
     });
 
-    function enableInteraction(element) {
-        $(element).removeClass("disabled")
-        toggleLastClass();
-        if ($(element).find(".backTrack").length > 0) {
-            $(".backTrack").show()
-        }
-        $(element).fadeIn();
-        $('#chat-window').animate({
-            scrollTop: $(element).offset().top
-        },600);
-    }
-
-    function toggleLastClass() {
-        $(".bot-interaction").each(function(){
-            if ($(this).hasClass("last")) {
-                $(this).removeClass('last')
-            }
-        });
-    
-        $('.bot-interaction:not(".disabled"):last').addClass('last');
-        $('.bot-interaction:not(".last")').addClass('disabled')
-    }
-
-    $(document).on ("click", ".backTrack", function (){
-
-        var bloc = $(this).parents('.bot-interaction');
-        console.log('"bloc"\'s index equals ' + $(bloc).index() )
-
-        console.log(answersArr);
-        answersArr.pop();
-        console.log('"paramArr" now counts ' + answersArr.length + ' items')
-        console.log(answersArr);
-
-        if (bloc.hasClass("last")) {
-
-            $(bloc).removeClass("last");
-            $(bloc).addClass("disabled");
-            $(bloc).prev().removeClass("disabled");
-
-            var radio = bloc.find('input');
-
-            radio.each(function() {
-                if ($(this).attr("disabled")) {
-                    $(this).removeAttr("disabled")
-                }
-
-                if ($(this).hasClass("selected")) {
-                    $(this).removeClass("selected")
-                }
-            });
-
-            $('.bot-interaction:not(".disabled"):last').addClass('last');
-
-            if ($(bloc).index() > 1) {
-                $(bloc).fadeOut()
-                var radioPrev = bloc.prev().find('input')
-                radioPrev.each(function() {
-                    if ($(this).attr("disabled")) {
-                        $(this).removeAttr("disabled")
-                    }
-    
-                    if ($(this).hasClass("selected")) {
-                        $(this).removeClass("selected")
-                    }
-                });
-            }
-        }
-
-        if ($("#send-param-div").is(":visible")) {
-            $("#send-param-div").hide()
-        }
-    });
-
-    $(document).on ("click", "#reduce-Cmd-Btn", function (){
-        if ($(this).hasClass("to-expand")) {
-            $('#send-param-div').animate({height: '100%',},400);
-            $("#chat-window").css("overflow-y","hidden");
-            $(this).css("margin-top","20%")
-        } else {
-            $('#send-param-div').animate({height: '60px',},400);
-            $("#chat-window").css("overflow-y","scroll");
-            $(this).css("margin-top","10px")
-        }
-        // $('#send-param-div').animate({height: '60px',},400);
-        $(this).toggleClass("to-expand");
-        $('#send-param-div div').toggleClass("visible")
+    $("#submitanswerForm3").on("click", function(event) {
+        $("#userInputForm").append('<div id="interaction4" class="card interaction w-100 h-auto p-3 mx-5 start-0 txt-ctt"><div class="card-body"><h1 class="card-question mb-5 text-center fs-1 fw-bold">Excellent!</h1><p>We got all the information we need to fetch the perfect smartphone for you!</p><p>Ready?!</p><input type="hidden" id="ParamArray" name="ParamArray" value=""><input type="submit" id="sendParamBtn" name="sendParam" value="Let\'s do it!" /></div></div>');
+        cardSlide("interaction4", event);
     });
 
     $(document).on ("click", "#sendParamBtn", function () {
-        // $(this).val(answersArr)
-
         $('#ParamArray').val(JSON.stringify(answersArr))
-        
-        // $.post( $("#devSubmit").attr("action"),
-            
-        //     //$("#myForm :input").serializeArray(), 
-        //     function(info){ $("#result").html(info); 
-        // });
+    });
 
-        // $("#devSubmit").submit( function() {
-        //     return false;	
-        // });
+    // $("#submitanswerForm3").submit(function(event) {
+    //     /* Stop form from submitting normally */
+    //     event.preventDefault();
+
+    //     var FoO = $(answersArr).serialize();
+
+    //     $.ajax({
+    //         type : "POST",  //type of method
+    //         url  : "devices.php",  //your page
+    //         data : FoO,// passing the values
+    //         // contentType: "application/json; charset=utf-8",
+    //         dataType: "json",
+    //         success: function(res){  
+    //             //do what you want here...
+    //             console.log(JSON.stringify(res));
+    //         },
+    //         error: (error) => {
+    //             console.log(JSON.stringify(error));
+    //         }
+    //     });
+    // });
+
+    $("input").on("click", function(event) {
+        setParameters(event)
     });
 });

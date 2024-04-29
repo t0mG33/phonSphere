@@ -31,21 +31,39 @@ main {
     background: floralwhite;
     .jumbo {
         margin-top: 17%;
-        max-width: 600px;
-        .card.txt-ctt {
-            color: $darkerOrange;
-            box-shadow: -5px 6px 14px 1px rgba(0,0,0,0.25);
-            -webkit-box-shadow: -5px 6px 14px 1px rgba(0,0,0,0.25);
-            -moz-box-shadow: -5px 6px 14px 1px rgba(0,0,0,0.25);
-            button {
-                background: linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
-                background: -webkit-linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
-                background: -moz-linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
-                width: 100px;
-                border: none;
+        width: 3500px;
+        .card {
+            display: inline-block;
+            max-width: 600px;
+            &.txt-ctt {
+                color: $darkerOrange;
+                box-shadow: -5px 6px 14px 1px rgba(0,0,0,0.25);
+                -webkit-box-shadow: -5px 6px 14px 1px rgba(0,0,0,0.25);
+                -moz-box-shadow: -5px 6px 14px 1px rgba(0,0,0,0.25);
+                button {
+                    background: linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
+                    background: -webkit-linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
+                    background: -moz-linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
+                    width: 100px;
+                    border: none;
+                }
+                h2 {
+                    color: darkslategray;
+                }
             }
-            h2 {
-                color: darkslategray;
+        }     
+    }
+    #userInputForm {
+        .interaction {
+            &.is-active {
+                margin-left: -600px;
+            }
+            .input-group input {
+                line-height: 0.5;
+                vertical-align: super;
+            }
+            .input-group label {
+                max-width: 95%;
             }
         }
     }
