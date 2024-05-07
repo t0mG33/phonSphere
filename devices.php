@@ -6,19 +6,11 @@
     $trimPost = str_replace('"','',$trimPost);
     //Arranging POST data into array
     $array = explode(",",$trimPost);
-    // echo $array;
     //Scope variables to store paramaters
     $phpKeyFeat = null;
     $phpScreenSize = null;
     $phpBattCap = null;
-    //Recovering JSON data for devices
-    // $JSONdevicesArr = file_get_contents("devices.json");
-    // $devicesDecode = json_decode($JSONdevicesArr, TRUE);
-    //Scope variable to store selection of devices
     $selectArr = [];
-    // $clientIp = $_SERVER['REMOTE_ADDR'];
-    // $clientDate = date("Y-m-d");
-    // $clientTime = date("h:i:sa");
     global $sql;
 
     function setParams() {
@@ -250,33 +242,39 @@
 
     <?php include 'includes/navbar.php';?>
 
-    <main id="devices-ctn">
+    <main id="devices-ctn vh-100">
         <div class="container">
+
             <div class="row">
                 <div class="col-12  my-5">
+                    <h1 class="res-hd-title">We would like to recommend the devices below to you</h1>
+                </div>
+            </div>
 
-                    <h1 class="res-hd-title">We recommend these devices:</h1>
+            <div class="row">
+                
+                <?php foreach ($selectArr as $item) :?>
 
-                    <div class="dev-cards-ctn">
-
-                        <?php foreach ($selectArr as $item) :?>
-
-                            <div class="dev-card">
-                                <img src="<?= $item['image'] ?>" alt="<?= $item['brand'] . ' ' . $item['name'] ?>"/>
-                                <div class="caption">
-                                    <h5><?= $item['brand'] . " " . $item['name'] ?></h5>
-                                </div>
-                                
-                            </div>
-
-                        <?php endforeach ?>
-
+                <div class="col-md-4">
+                    
+                    <div class="dev-card">
+                        <img src="<?= $item['image'] ?>" alt="<?= $item['brand'] . ' ' . $item['name'] ?>"/>
+                        <div class="caption">
+                            <h5><?= $item['brand'] . " " . $item['name'] ?></h5>
+                        </div>
                     </div>
+                    
+                </div>
 
+                <?php endforeach ?>
+
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-12 mt-3">
                     <a href="./">
-                        <button id="startAgainBtn" class="custom-btn">Start again</button>
+                        <button id="startAgainBtn" class="custom-btn d-block m-auto py-2 px-3 rounded-pill fs-6 fw-bold animate__animated animate__pulse">Start again</button>
                     </a>
-
                 </div>
             </div>
         </div>

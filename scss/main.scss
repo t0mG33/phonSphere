@@ -15,9 +15,19 @@ body {
     font-family: "Kayak", sans-serif;
     font-weight: 400;
     font-size: 0.7em;
+    height: inherit;
 }
 
 a {text-decoration: none}
+
+button,
+input#sendParamBtn {
+    background: linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
+    background: -webkit-linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
+    background: -moz-linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
+    width: 100px;
+    border: none;
+}
 
 .navbar,
 .footer {
@@ -29,41 +39,30 @@ a {text-decoration: none}
 
 main {
     background: floralwhite;
+    height: inherit;
     .jumbo {
         margin-top: 17%;
-        width: 3500px;
         .card {
-            display: inline-block;
-            max-width: 600px;
+            width: inherit;
             &.txt-ctt {
                 color: $darkerOrange;
                 box-shadow: -5px 6px 14px 1px rgba(0,0,0,0.25);
                 -webkit-box-shadow: -5px 6px 14px 1px rgba(0,0,0,0.25);
                 -moz-box-shadow: -5px 6px 14px 1px rgba(0,0,0,0.25);
-                button {
-                    background: linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
-                    background: -webkit-linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
-                    background: -moz-linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
-                    width: 100px;
-                    border: none;
-                }
-                h2 {
-                    color: darkslategray;
-                }
             }
         }     
     }
     #userInputForm {
+        width: inherit;
         .interaction {
-            &.is-active {
-                margin-left: -600px;
-            }
             .input-group input {
-                line-height: 0.5;
-                vertical-align: super;
+                line-height: 2;
+                vertical-align: top;
+                width: 20px;
+                height: 20px;
             }
             .input-group label {
-                max-width: 95%;
+                max-width: 90%;
             }
         }
     }
@@ -77,164 +76,6 @@ main {
     }
 }
 
-.custom-btn {
-    border-radius: 50px;
-    background: $darkerOrange;
-    width: 100px;
-    height: 50px;
-    color: #fff;
-    text-align: center;
-    margin: 30px auto 0;
-    display: block;
-    border: none
-}
-
-.bot-interaction {
-    height: auto;
-    font-size: 1.13em;
-    &.intro {
-        height: auto;
-        min-height: 60px;
-        margin-bottom: 20px;
-        .question {margin-bottom: 0}
-    }
-    width: 90%;
-    margin: auto auto 30px auto;
-    display: none;
-    .interaction-bloc {
-        display: flex;
-        flex-direction: column;
-        min-height: 60px
-    }
-    .question {
-        height: auto;
-        min-height: 60px;
-        margin-bottom: 20px;
-        div {display: inline-block}
-        .avatar {
-            background: url('../img/avatar.png');
-            width: 50px;
-            height: 50px;
-            background-size: contain;
-            margin-bottom: 0;
-            float: left;
-            margin-right: 5px
-        }
-        .qtn-bloc {
-            width: 55%;
-            background: $darkerOrange;
-            color: $lighterOrange;
-            padding: 5px 10px;
-            float: left;
-            border-radius: 0px 15px 15px;
-            height: 100%;
-            min-height: 50px;
-            display: flex;
-            align-items: center;
-            font-size: 1.25em
-        }
-    }
-    .answer {
-        input {
-            margin-left: 10px;
-            margin-bottom: 10px;
-            border: 3px solid #fde3a7;
-            color: #fde3a7;
-            background: none;
-            height: 100%;
-            min-height: 40px;
-            border-radius: 50px;
-            padding: 5px 15px;
-            float: right;
-            width: auto;
-            min-width: 35%;
-            white-space: normal;
-            text-align: left;
-            line-height: 20px;
-            font-weight: 700;
-            &.selected {
-                background: $darkerOrange;
-                color: #fff;
-                border: 1.2px solid $darkerOrange
-            }
-        }
-    }
-
-    .backTrack {
-        display: none;
-        width: 50px;
-        height: 50px;
-        background-color: $lighterOrange;
-        border: none;
-        color: $darkerOrange;
-        border-radius: 0;
-        padding: 15px 5px;
-        margin-left: 25px;
-        margin-top: 0;
-        img {width: 80%}
-        &:active {background-color: red}
-        &.enabled {display: inline-block}
-    }
-
-    &.disabled {
-        opacity: 0.7
-    }
-}
-
-#chat-window {
-    width: 100%;
-    display: none;
-    height: inherit;
-    max-height: 350px;
-    padding-top: 20px;
-    overflow-y: scroll;
-}
-
-#send-param-div {
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: $darkerOrange;
-    border: none;
-    color: $lighterOrange;
-    height: 60px;
-    font-size: 1.7em;
-    display: none;
-    #reduce-Cmd-Btn {
-        border: none;
-        width: 40px;
-        height: 40px;
-        background: none;
-        display: block;
-        margin: 10px 20px auto auto;
-        img {
-            width: 100%;
-            display: none
-        }
-        &.to-expand {
-            transform: rotate(180deg);
-        }
-    }
-    div {
-        width: 80%;
-        margin: 5% auto auto auto;
-        display: none;
-        &.visible {display: block}
-        a {text-decoration: none}
-        #sendParamBtn {
-            color: $darkerOrange;
-            background: $lighterOrange;
-            width: 170px;
-            margin: 50px auto;
-            display: block;
-            border-radius: 7px;
-            height: 50px
-        }
-    }
-}
-
 .res-hd-title {
     text-align: center;
     margin: 40px auto;
@@ -242,7 +83,6 @@ main {
 }
 
 .dev-card {
-    width: 80%;
     margin: auto auto 40px;
     border: 0.1px solid lightgray;
     -webkit-box-shadow: 9px 12px 16px 4px rgba(166,166,166,0.5);
@@ -261,12 +101,15 @@ main {
         font-size: 1.8em;
         border-top: 1px solid grey;
         text-align: center;
-        background: $darkerOrange;
+        background: linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
+        background: -webkit-linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
+        background: -moz-linear-gradient(0deg,#ff7200 0%, #ffaf00 80%);
         font-weight: 700;
-        color: $lighterOrange;
+        color: #015;
         h5 {
             margin-top: 0;
-            margin-bottom: 0
+            margin-bottom: 0;
+            line-height: 2;
         }
         &.expanded {
             min-height: 120px;            
@@ -280,253 +123,26 @@ main {
     margin: 60px auto
 }
 
-@media (min-width:400px) {
-    .bot-interaction {
-        .backTrack {margin-left: 10%}
-    }
-}
-
-@media (max-width:400px) {
-    main {
-        .jumbo {
-            .txt-ctt {
-                width: 80%;
-                padding:1.25rem;
-                h2 {
-                    text-align: center;
-                }
-                button {
-                    margin: 10% auto;
-                }
-            }
-        }
-    }
-}
-
-@media (min-width:568px) {
-    .bot-interaction {
-        .backTrack {margin-left: 24%}
-    }
-}
-
-@media (min-width:767px) {
-    .bot-interaction {
-        .backTrack {margin-top: 0px}
-    }
-    .dev-card {
-        width: 25%;
-        margin: auto 30px 40px;
-        display: inline-block
-    }
-}
-
 @media (min-width:768px) and (orientation:portrait) {
-    .main {
-        .jumbo {
-            .txt-ctt {
-                h2 {
-                    font-size: 1.35rem;
-                    text-align: center;
-                }
-                button {
-                    margin: 10% auto 5%;
-                }
-            }
-        }
+    .res-hd-title {
+        width: 70%;
+    }
+    footer {
+        margin-bottom: -15px;
     }
 
-    .card {
-        width: 50%;
-        overflow: scroll;
-        top: 15%;
-        left: 17%;
-        margin-bottom: 10%
-    }
-
-    #main-ctn {height: 45vh}
-
-    #chat-window {padding-bottom: 10%}
-    .bot-interaction {
-        .answer {
-            input {
-                float: none;
-                display: block;
-                margin: auto 0 20px auto
-            }
-        }
-        .backTrack {margin-left: 26%}
-    }
-}
-
-@media (min-width:992px) {
-    #logo {
-        width: 90px;
-        height: 40px;
-    }
-
-    #main-ctn {
-        width: 100%;
-        top: 60px;
-        height: 90vh;
-        z-index: 0;
-        padding-bottom: 0;
-        overflow-x: hidden
-    }
-
-    #chat-window {
-        background: $nightBlue
-    }
-
-    .bot-interaction {
-        .backTrack {margin-left: 25px}
-    }
-
-    #send-param-div {bottom: -15px}
-
-}
-
-
-@media (min-width:992px) and (orientation:portrait) {
-    #main-ctn {
-        top: 0px;
-        height: 45vh
-    }
-
-    .bot-interaction {
-        .backTrack {margin-left: 30%}
-    }
-}
-
-@media (min-width:992px) and (orientation:landscape) {
-
-    #main-ctn {position: absolute}
-
-    #chat-window {
-        position: absolute;
-        width: 380px;
-        max-height: unset;
-        top: 0;
-        right: -100%;
-        display: block
-    }
-
-    #send-param-div {
-        position: absolute;
-        left: unset;
-        right: 0;
-        width: 380px
-    }
-
-    .dev-cards-ctn {
-        margin: auto;
-        display: block
-    }
-
-    .dev-card {margin: auto 30px 40px}
-
-    #startAgainBtn {margin: 10% auto}
 }
 
 @media (min-width: 1200px) {
-    #chat-window {padding-bottom: 0}
-
-    .res-hd-title {font-size: 2.6em}
-    .dev-cards-ctn {width: 1000px}
-    .dev-card {width: 27%}
-    #startAgainBtn {margin: 20px auto}
-}
-
-@media (min-width: 1200px) and (min-height:780px) {
-    #startAgainBtn {
-        margin: 20px auto 20%;
-    }
-}
-
-@media (min-width: 1400px) {
-    .res-hd-title {margin: 5% auto}
-
-    .dev-cards-ctn {width: 950px}
-
-    .dev-card {width: 250px}
-
-    #chat-window {padding-bottom: 20%}
-}
-
-@media (min-width: 1400px) and (min-height:992px) {
-    #startAgainBtn {margin: 10% auto}
-}
-
-@media (min-width: 1600px) {
-    .res-hd-title {font-size: 4em}
-}
-
-@media (min-width: 2500px) {
-    .card {
-        width: 800px;
-        right: 100px;
-        h3 {font-size: 5em}
-        p,button {font-size: 2.5em}
-        button {
-            width: 200px;
-            height: 80px;
-            margin: 80px auto 0
-        }
-    }
-    #chat-window {
-        width: 700px;
-    }
-    .bot-interaction {
-        .question {
-            .avatar {
-                width: 80px;
-                height: 80px
-            }
-            .qtn-bloc {
-                width: 65%;
-                font-size: 2.25em
+    main {
+        #userInputForm {
+            .interaction {
+                h1 {
+                    width: 60%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
             }
         }
-        .answer {
-            input {
-                margin-bottom: 20px;
-                min-height: 60px;
-                padding: 5px 30px;
-                font-size: 1.5em
-            }
-        }
-        .backTrack {
-            display: none;
-            width: 80px;
-            height: 80px;
-            background-color: $lighterOrange;
-            border: none;
-            color: $darkerOrange;
-            border-radius: 0;
-            padding: 15px 5px;
-            margin-left: 30px;
-            margin-top: 5px;
-        }
     }
-    #send-param-div {
-        width: 700px;
-        height: 100px;
-        div {
-            margin-top: 50%;
-            h3 {font-size: 3em}
-            p, button {font-size: 1.8em}
-            #sendParamBtn {
-                width: 250px;
-                height: 80px;
-                margin: 60px auto 0
-            }
-        }
-        #reduce-Cmd-Btn {
-            width: 100px;
-            height: 100px
-        }
-    }
-}
-
-@media (min-height:1080px) and (max-width:1920px) {
-    #send-param-div div {margin: 100% auto auto auto}
 }

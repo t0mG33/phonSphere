@@ -120,7 +120,7 @@ function renderUserInputForm(arr) {
         //     }
         // }
 
-        $("#userInputForm").append('<div id="interaction' + count + '" class="d-none card interaction w-100 h-auto p-3 mx-5 start-0 txt-ctt"><div class="card-body"><h1 class="card-question mb-5 text-center fs-1 fw-bold">' + q.labelContent + '</h1></div></div>');
+        $("#userInputForm").append('<div id="interaction' + count + '" class="d-none card interaction w-100 h-auto p-3 start-0 txt-ctt"><div class="card-body"><h1 class="card-question mb-5 text-center fs-1 fw-bold">' + q.labelContent + '</h1></div></div>');
         arr = q.inputs;
         $(arr).each(function(n, input) {
             $('#interaction'+ count).find(".card-body").append('<div class="input-group d-block"><input id="' + input.ID + '" type="radio" name="" value="' + input.Value + '" class="mt-2" /><label for="' + input.ID + '" class="fs-4 ms-2">' + input.Value + '</label></div>')
@@ -133,7 +133,7 @@ function renderUserInputForm(arr) {
 //Sliding animation for each card in the input form
 function cardSlide(cardId, event) {
     $(event.target).parents(".card").addClass("animate__animated animate__backOutLeft");
-    $("#" + cardId).removeClass("d-none").addClass("is-active animate__animated animate__backInRight");
+    $("#" + cardId).removeClass("d-none").addClass("d-inline-block animate__animated animate__backInRight");
     $(event.target).parents(".card").addClass("d-none");
 }
 
@@ -160,7 +160,7 @@ $(document).ready(function(){
     });
 
     $("#submitanswerForm3").on("click", function(event) {
-        $("#userInputForm").append('<div id="interaction4" class="card interaction w-100 h-auto p-3 mx-5 start-0 txt-ctt"><div class="card-body"><h1 class="card-question mb-5 text-center fs-1 fw-bold">Excellent!</h1><p>We got all the information we need to fetch the perfect smartphone for you!</p><p>Ready?!</p><input type="hidden" id="ParamArray" name="ParamArray" value=""><input type="submit" id="sendParamBtn" name="sendParam" value="Let\'s do it!" /></div></div>');
+        $("#userInputForm").append('<div id="interaction4" class="card interaction d-inline-block w-100 h-auto p-3 start-0 txt-ctt"><div class="card-body"><h1 class="card-question mb-5 text-center fs-1 fw-bold">Excellent!</h1><p class="fs-3">We got all the information we need to fetch the perfect smartphone for you!</p><p class="fs-3">Ready?!</p><input type="hidden" id="ParamArray" name="ParamArray" value=""><input type="submit" id="sendParamBtn" class="d-block mx-auto mt-4 py-2 px-3 rounded-pill fs-6 fw-bold animate__animated animate__pulse" name="sendParam" value="Let\'s do it!" /></div></div>');
         cardSlide("interaction4", event);
     });
 
